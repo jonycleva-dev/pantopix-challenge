@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tableData>
+    <table name="products_indent.xlsx" rowCnt="31" colCnt="11">
+        <row iRow="1">
+            <cell iCol="1">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[pgr 1]</b>
+                </value>
+            </cell>
+            <cell iCol="2">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[pgr 2]</b>
+                </value>
+            </cell>
+            <cell iCol="3">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[pgr 3]</b>
+                </value>
+            </cell>
+            <cell iCol="4">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[pgr 4]</b>
+                </value>
+            </cell>
+            <cell iCol="5">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[id]</b>
+                </value>
+            </cell>
+            <cell iCol="6">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[application]</b>
+                </value>
+            </cell>
+            <cell iCol="7">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[material]</b>
+                </value>
+            </cell>
+            <cell iCol="8">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[voltage]</b>
+                </value>
+            </cell>
+            <cell iCol="9">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[article]</b>
+                </value>
+            </cell>
+            <cell iCol="10">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[articleNumber]</b>
+                </value>
+            </cell>
+            <cell iCol="11">
+                <styleSettings textFormats="b"/>
+                <value>
+                    <b>[size]</b>
+                </value>
+            </cell>
+        </row>
+        <row iRow="2">
+            <cell iCol="1">
+                <value>Deckenleuchten</value>
+            </cell>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>DL</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="3">
+            <cell iCol="1"/>
+            <cell iCol="2">
+                <value>Esszimmerleuchten</value>
+            </cell>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>DL-EZ</value>
+            </cell>
+            <cell iCol="6">
+                <value>Esszimmer</value>
+            </cell>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="4">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3">
+                <value>Esszimmerleuchten aus Holz</value>
+            </cell>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>DL-EZ-H</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7">
+                <value>Holz</value>
+            </cell>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="5">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4">
+                <value>Holzlampen, 220 V</value>
+            </cell>
+            <cell iCol="5">
+                <value>DL-EZ-H-220</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8">
+                <value>220 V</value>
+            </cell>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="6">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 220 V - klein</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH220-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Klein</value>
+            </cell>
+        </row>
+        <row iRow="7">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 220 V - mittel</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH220-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Mittel</value>
+            </cell>
+        </row>
+        <row iRow="8">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 220 V - groß</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH220-03</value>
+            </cell>
+            <cell iCol="11">
+                <value>Groß</value>
+            </cell>
+        </row>
+        <row iRow="9">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4">
+                <value>Holzlampen, 12 V</value>
+            </cell>
+            <cell iCol="5">
+                <value>DL-EZ-H-12</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8">
+                <value>12 V</value>
+            </cell>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="10">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 12 V - klein</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH12-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Klein</value>
+            </cell>
+        </row>
+        <row iRow="11">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 12 V - mittel</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH12-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Mittel</value>
+            </cell>
+        </row>
+        <row iRow="12">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Holz - 12 V - groß</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EH12-03</value>
+            </cell>
+            <cell iCol="11">
+                <value>Groß</value>
+            </cell>
+        </row>
+        <row iRow="13">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3">
+                <value>Esszimmerleuchten aus Metall</value>
+            </cell>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>DL-EZ-M</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7">
+                <value>Metall</value>
+            </cell>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="14">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Metall - klein</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EM-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Klein</value>
+            </cell>
+        </row>
+        <row iRow="15">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Metall - mittel</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EM-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Mittel</value>
+            </cell>
+        </row>
+        <row iRow="16">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Esszimmerleuchte - Metall - groß</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-EM-03</value>
+            </cell>
+            <cell iCol="11">
+                <value>Groß</value>
+            </cell>
+        </row>
+        <row iRow="17">
+            <cell iCol="1"/>
+            <cell iCol="2">
+                <value>Schlafzimmerleuchten</value>
+            </cell>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>DL-SZ</value>
+            </cell>
+            <cell iCol="6">
+                <value>Schlafzimmer</value>
+            </cell>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="18">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Schlafzimmerleuchte - klein</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-SZ-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Klein</value>
+            </cell>
+        </row>
+        <row iRow="19">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Schlafzimmerleuchte - mittel</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-SZ-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Mittel</value>
+            </cell>
+        </row>
+        <row iRow="20">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Schlafzimmerleuchte - groß</value>
+            </cell>
+            <cell iCol="10">
+                <value>DL-SZ-03</value>
+            </cell>
+            <cell iCol="11">
+                <value>Groß</value>
+            </cell>
+        </row>
+        <row iRow="21">
+            <cell iCol="1">
+                <value>Matratzen</value>
+            </cell>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>M</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="22">
+            <cell iCol="1"/>
+            <cell iCol="2">
+                <value>Federkern</value>
+            </cell>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>M-FK</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="23">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Federkern - schmal</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-FK-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Schmal</value>
+            </cell>
+        </row>
+        <row iRow="24">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Federkern - breit</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-FK-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Breit</value>
+            </cell>
+        </row>
+        <row iRow="25">
+            <cell iCol="1"/>
+            <cell iCol="2">
+                <value>Kaltschaum</value>
+            </cell>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>M-KS</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="26">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3">
+                <value>Latex-Auflage</value>
+            </cell>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>M-KS-L</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="27">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Kaltschaum - Latex-Auflage - schmal</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-KS-L-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Schmal</value>
+            </cell>
+        </row>
+        <row iRow="28">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Kaltschaum - Latex-Auflage - breit</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-KS-L-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Breit</value>
+            </cell>
+        </row>
+        <row iRow="29">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3">
+                <value>Gel-Auflage</value>
+            </cell>
+            <cell iCol="4"/>
+            <cell iCol="5">
+                <value>M-KS-G</value>
+            </cell>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9"/>
+            <cell iCol="10"/>
+            <cell iCol="11"/>
+        </row>
+        <row iRow="30">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Kaltschaum - Gel-Auflage - schmal</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-KS-G-01</value>
+            </cell>
+            <cell iCol="11">
+                <value>Schmal</value>
+            </cell>
+        </row>
+        <row iRow="31">
+            <cell iCol="1"/>
+            <cell iCol="2"/>
+            <cell iCol="3"/>
+            <cell iCol="4"/>
+            <cell iCol="5"/>
+            <cell iCol="6"/>
+            <cell iCol="7"/>
+            <cell iCol="8"/>
+            <cell iCol="9">
+                <value>Matratze - Kaltschaum - Latex-Auflage - breit</value>
+            </cell>
+            <cell iCol="10">
+                <value>M-KS-G-02</value>
+            </cell>
+            <cell iCol="11">
+                <value>Breit</value>
+            </cell>
+        </row>
+    </table>
+</tableData>

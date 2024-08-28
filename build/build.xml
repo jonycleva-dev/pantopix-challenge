@@ -1,0 +1,97 @@
+<project name="PantopixChallenge" default="transform" basedir="../">
+    <!-- Set project properties for directories -->
+    <property name="src.dir" location="src"/>
+    <property name="input.dir" location="input"/>
+    <property name="output.dir" location="output"/>
+    <property name="lib.dir" location="lib"/>
+    <property name="build.dir" location="build"/>
+
+    <!-- Define a property for the Excel file name -->
+    <property name="excel.file.name" value="000_products_indent_noPrices.xlsx"/>
+    <property name="output.xml.file" value="000_products_indent_noPrices.xml"/>
+    <property name="output.html.file" value="000_products_indent_noPrices.html"/>
+    <property name="output.html.prices.file" value="000_products_indent_withPrices.html"/>
+    <property name="output.prices.xml.file" value="000_products_indent_withPrices.xml"/>
+    <property name="price.data.file" value="priceData.xml"/>
+
+    <!-- Task to clean the output directory before generating new files -->
+    <target name="clean">
+        <!-- Delete the existing output directory if it exists -->
+        <delete dir="${output.dir}"/>
+        <!-- Create a fresh output directory -->
+        <mkdir dir="${output.dir}"/>
+    </target>
+
+    <!-- Task to compile Java source code -->
+    <target name="compile">
+        <!-- Create the build directory where compiled classes will be placed -->
+        <mkdir dir="${build.dir}"/>
+        <!-- Compile all Java files in the src directory -->
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <!-- Include all JARs from the lib directory in the classpath -->
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Task to convert an Excel file to XML using the compiled Java class -->
+    <target name="convert-excel-to-xml" depends="compile">
+        <!-- Execute the Java class responsible for converting Excel to XML -->
+        <java classname="pantopix.exceltoxml.ExcelToXmlConverter" fork="true">
+            <!-- Set the classpath to include the compiled classes and required libraries -->
+            <classpath>
+                <path path="${build.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+            <!-- Pass arguments: input Excel file, output XML file, and table name -->
+            <arg value="${input.dir}/${excel.file.name}"/>
+            <arg value="${output.dir}/${output.xml.file}"/>
+            <arg value="${excel.file.name}"/>
+        </java>
+    </target>
+
+    <!-- Task to generate an HTML preview from the XML file -->
+    <target name="generate-html-preview" depends="clean, convert-excel-to-xml">
+        <!-- Apply the XSLT transformation to generate the HTML preview -->
+        <xslt in="${output.dir}/${output.xml.file}"
+              out="${output.dir}/${output.html.file}"
+              style="${src.dir}/transform_to_html.xslt">
+            <!-- Pass the file name as a parameter to the XSLT if needed -->
+            <param name="fileName" expression="${output.xml.file}"/>
+        </xslt>
+    </target>
+
+    <!-- Task to add prices values -->
+    <target name="process-with-prices" depends="generate-html-preview">
+        <xslt in="${output.dir}/${output.xml.file}"
+              out="${output.dir}/${output.prices.xml.file}"
+              style="${src.dir}/add_prices.xslt">
+            <param name="priceDataFile" expression="${input.dir}/${price.data.file}"/>
+        </xslt>
+    </target>
+
+    <!-- Task to generate an HTML preview from the XML file with prices -->
+    <target name="generate-html-prices-preview" depends="process-with-prices">
+        <!-- Apply the XSLT transformation to generate the HTML preview -->
+        <xslt in="${output.dir}/${output.prices.xml.file}"
+              out="${output.dir}/${output.html.prices.file}"
+              style="${src.dir}/transform_to_html.xslt">
+            <!-- Pass the file name as a parameter to the XSLT if needed -->
+            <param name="fileName" expression="${output.prices.xml.file}"/>
+        </xslt>
+    </target>
+
+    <target name="generate-csv" depends="generate-html-prices-preview">
+        <xslt in="${output.dir}/${output.prices.xml.file}"
+              out="${output.dir}/output_with_prices.csv"
+              style="${src.dir}/transform_to_csv.xslt">
+        </xslt>
+        <echo message="CSV file generated at ${output.dir}/output_with_prices.csv"/>
+    </target>
+
+</project>

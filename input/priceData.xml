@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<priceData>
+   <node type="productGroup" name="Deckenleuchten" id="DL">
+      <article id="EH220-01" currency="EUR" price="210,00"/>
+      <article id="EH220-02" currency="EUR" price="220,00"/>
+      <article id="EH220-03" currency="EUR" price="230,00"/>
+      <article id="EH12-01" currency="EUR" price="160,00"/>
+      <article id="EH12-02" currency="EUR" price="170,00"/>
+      <article id="EH12-03" currency="EUR" price="180,00"/>
+      <article id="EM-01" currency="EUR" price="310,00"/>
+      <article id="EM-02" currency="EUR" price="320,00"/>
+      <article id="EM-03" currency="EUR" price="330,00"/>
+      <article id="SZ-01" currency="EUR" price="55,00"/>
+      <article id="SZ-02" currency="EUR" price="65,00"/>
+      <article id="SZ-03" currency="EUR" price="75,00"/>
+   </node>
+   <node type="productGroup" name="Matratzen" id="M">
+      <article id="FK-01" currency="EUR" price="600,00"/>
+      <article id="FK-02" currency="EUR" price="699,00"/>
+      <article id="KS-L-01" currency="EUR" price="500,00"/>
+      <article id="KS-L-02" currency="EUR" price="599,00"/>
+      <article id="KS-G-01" currency="EUR" price="400,00"/>
+      <article id="KS-G-02" currency="EUR" price="499,00"/>
+   </node>
+</priceData>
