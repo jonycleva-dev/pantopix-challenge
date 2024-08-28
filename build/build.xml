@@ -12,7 +12,11 @@
     <property name="output.html.file" value="000_products_indent_noPrices.html"/>
     <property name="output.html.prices.file" value="000_products_indent_withPrices.html"/>
     <property name="output.prices.xml.file" value="000_products_indent_withPrices.xml"/>
+    <property name="output.functional.xml.file" value="010_products_functional_noPrices.xml"/>
+    <property name="output.functional.prices.xml.file" value="020_products_functional_withPrices.xml"/>
+
     <property name="price.data.file" value="priceData.xml"/>
+    <property name="output.xml.temp.file" value="temp_process.xml"/>
 
     <!-- Task to clean the output directory before generating new files -->
     <target name="clean">
@@ -69,10 +73,18 @@
     <!-- Task to add prices values -->
     <target name="process-with-prices" depends="generate-html-preview">
         <xslt in="${output.dir}/${output.xml.file}"
-              out="${output.dir}/${output.prices.xml.file}"
-              style="${src.dir}/add_prices.xslt">
+              out="${output.dir}/${output.xml.temp.file}"
+              style="${src.dir}/add_price_data.xslt">
             <param name="priceDataFile" expression="${input.dir}/${price.data.file}"/>
         </xslt>
+
+        <xslt in="${output.dir}/${output.xml.temp.file}"
+              out="${output.dir}/${output.prices.xml.file}"
+              style="${src.dir}/020_addPrices_indent.xsl"/>
+
+        <!-- Delete the original input file -->
+        <delete file="${output.dir}/${output.xml.temp.file}"/>
+
     </target>
 
     <!-- Task to generate an HTML preview from the XML file with prices -->
@@ -86,12 +98,36 @@
         </xslt>
     </target>
 
-    <target name="generate-csv" depends="generate-html-prices-preview">
+    <!-- Task convert to functional -->
+    <target name="products-functional" depends="generate-html-prices-preview">
+
+        <xslt in="${output.dir}/${output.xml.file}"
+              out="${output.dir}/${output.functional.xml.file}"
+              style="${src.dir}/010_convertToFunctionalXml.xsl"/>
+    </target>
+
+    <!-- Task to add prices values to functional -->
+    <target name="process-with-prices-functional" depends="products-functional">
+        <xslt in="${output.dir}/${output.functional.xml.file}"
+              out="${output.dir}/${output.xml.temp.file}"
+              style="${src.dir}/add_price_data.xslt">
+            <param name="priceDataFile" expression="${input.dir}/${price.data.file}"/>
+        </xslt>
+
+        <xslt in="${output.dir}/${output.xml.temp.file}"
+              out="${output.dir}/${output.functional.prices.xml.file}"
+              style="${src.dir}/020_addPrices.xsl"/>
+
+        <!-- Delete the original input file -->
+        <delete file="${output.dir}/${output.xml.temp.file}"/>
+
+    </target>
+
+    <target name="generate-csv" depends="process-with-prices-functional">
         <xslt in="${output.dir}/${output.prices.xml.file}"
-              out="${output.dir}/output_with_prices.csv"
+              out="${output.dir}/040_products_indent_withPrices.csv"
               style="${src.dir}/transform_to_csv.xslt">
         </xslt>
-        <echo message="CSV file generated at ${output.dir}/output_with_prices.csv"/>
     </target>
 
 </project>

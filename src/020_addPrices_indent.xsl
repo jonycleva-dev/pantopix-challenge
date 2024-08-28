@@ -1,23 +1,16 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-    <!-- Parameter to receive the path of the price data file -->
-    <xsl:param name="priceDataFile"/>
+    <!-- Global variable to identify the column that contains '[articleNumber]' -->
+    <xsl:variable name="articleNumberColumn" select="/tableData/table/row[1]/cell[normalize-space(value) = '[articleNumber]']/@iCol"/>
 
-    <!-- Load the price data file -->
-    <xsl:variable name="priceData" select="document($priceDataFile)/priceData"/>
-
-    <!-- Global variable to identify the column that contains '[id]' -->
-    <xsl:variable name="idColumn" select="/tableData/table/row[1]/cell[normalize-space(value) = '[articleNumber]']/@iCol"/>
-
+    <!-- Global variable to identify the current column count -->
     <xsl:variable name="colCnt" select="/tableData/table/@colCnt"/>
 
-    <xsl:output method="xml" indent="yes"/>
+    <!-- Global variable to get all article elements -->
+    <xsl:key name="articleKey" match="priceData/node/article" use="@id"/>
 
-    <!-- Define a custom decimal format -->
-    <xsl:decimal-format name="customFormat"
-                        decimal-separator=","
-                        grouping-separator="."/>
+    <xsl:output method="xml" indent="yes"/>
 
     <!-- Identity template to copy all elements and attributes -->
     <xsl:template match="@*|node()">
@@ -69,9 +62,9 @@
 
     <!-- Template for the remaining rows -->
     <xsl:template match="row[position() > 1]">
-        <xsl:variable name="fullId" select="normalize-space(cell[@iCol = $idColumn]/value)"/>
+        <xsl:variable name="fullId" select="normalize-space(cell[@iCol = $articleNumberColumn]/value)"/>
         <xsl:variable name="articleId" select="substring-after($fullId, '-')"/>
-        <xsl:variable name="article" select="$priceData//article[@id = $articleId]"/>
+        <xsl:variable name="article" select="key('articleKey', $articleId)"/>
         <xsl:variable name="normalizedPrice" select="translate($article/@price, ',', '.')"/>
         <xsl:variable name="originalPrice" select="number($normalizedPrice)"/>
         <xsl:variable name="priceWoTax" select="format-number($originalPrice * 0.81, '#0.00')"/>
@@ -94,5 +87,8 @@
             </cell>
         </xsl:copy>
     </xsl:template>
+
+    <!-- removing prideData -->
+    <xsl:template match="priceData"/>
 
 </xsl:stylesheet>
