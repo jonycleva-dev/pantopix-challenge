@@ -10,10 +10,10 @@
 
     <xsl:template match="/root">
         <!-- Create the CSV header -->
-        <xsl:text>id&#9;name&#9;parentId</xsl:text>
+        <xsl:text>[id]&#9;[name]&#9;[parentId]</xsl:text>
         <xsl:for-each select="$allProps">
             <xsl:text>&#9;</xsl:text>
-            <xsl:value-of select="."/>
+            <xsl:value-of select="concat('[',.,']')"/>
         </xsl:for-each>
         <xsl:text>&#10;</xsl:text>
 
@@ -30,7 +30,7 @@
         <!-- Output the parentId column -->
         <xsl:choose>
             <xsl:when test="parent::node">
-                <xsl:value-of select="parent::node/@id"/>
+                <xsl:value-of select="../@id"/>
             </xsl:when>
             <xsl:otherwise>root</xsl:otherwise>
         </xsl:choose>
