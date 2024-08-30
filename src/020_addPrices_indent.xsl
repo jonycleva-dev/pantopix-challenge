@@ -94,7 +94,7 @@
         <xsl:param name="inputNumber" as="xs:string"/>
         <xsl:variable name="normalizedNumber" select="translate($inputNumber, ',', '.')"/>
         <xsl:variable name="result" select="number($normalizedNumber) * 0.81"/>
-        <xsl:value-of select="format-number($result, '0.#####')"/>
+        <xsl:value-of select="translate(format-number($result, '0.#####'), '.', ',')"/>
     </xsl:function>
 
 </xsl:stylesheet>
