@@ -4,8 +4,12 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 exclude-result-prefixes="my xs">
 
-    <!-- Global variable to get all article elements -->
-    <xsl:key name="articleKey" match="priceData/node/article" use="@id"/>
+    <!-- Parameters -->
+    <xsl:param name="priceDataFile"/>
+
+    <!-- Global variables -->
+    <xsl:variable name="externalPriceData" select="document($priceDataFile)/priceData"/>
+    <xsl:key name="articleKey" match="article" use="@id"/>
 
     <xsl:output method="xml" indent="yes"/>
 
@@ -34,7 +38,7 @@
 
     <xsl:template match="node[@type='article']">
         <xsl:variable name="fullId" select="normalize-space(prop[@key='articleNumber']/value)"/>
-        <xsl:variable name="article" select="key('articleKey', substring-after($fullId, '-'))"/>
+        <xsl:variable name="article" select="key('articleKey', substring-after($fullId, '-'), $externalPriceData)"/>
         <xsl:variable name="priceWoTax" select="my:processPrice($article/@price)"/>
         <xsl:copy>
             <!-- Copy all attributes and nodes of the row -->
@@ -50,8 +54,5 @@
             </xsl:if>
         </xsl:copy>
     </xsl:template>
-
-    <!-- removing prideData -->
-    <xsl:template match="priceData"/>
 
 </xsl:stylesheet>

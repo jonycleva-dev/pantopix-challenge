@@ -72,18 +72,12 @@
 
     <!-- Task to add prices values -->
     <target name="process-with-prices" depends="generate-html-preview">
+
         <xslt in="${output.dir}/${output.xml.file}"
-              out="${output.dir}/${output.xml.temp.file}"
-              style="${src.dir}/add_price_data.xslt">
+              out="${output.dir}/${output.prices.xml.file}"
+              style="${src.dir}/020_addPrices_indent.xsl">
             <param name="priceDataFile" expression="${input.dir}/${price.data.file}"/>
         </xslt>
-
-        <xslt in="${output.dir}/${output.xml.temp.file}"
-              out="${output.dir}/${output.prices.xml.file}"
-              style="${src.dir}/020_addPrices_indent.xsl"/>
-
-        <!-- Delete the original input file -->
-        <delete file="${output.dir}/${output.xml.temp.file}"/>
 
     </target>
 
@@ -108,18 +102,12 @@
 
     <!-- Task to add prices values to functional -->
     <target name="process-with-prices-functional" depends="products-functional">
+
         <xslt in="${output.dir}/${output.functional.xml.file}"
-              out="${output.dir}/${output.xml.temp.file}"
-              style="${src.dir}/add_price_data.xslt">
+              out="${output.dir}/${output.functional.prices.xml.file}"
+              style="${src.dir}/020_addPrices.xsl">
             <param name="priceDataFile" expression="${input.dir}/${price.data.file}"/>
         </xslt>
-
-        <xslt in="${output.dir}/${output.xml.temp.file}"
-              out="${output.dir}/${output.functional.prices.xml.file}"
-              style="${src.dir}/020_addPrices.xsl"/>
-
-        <!-- Delete the original input file -->
-        <delete file="${output.dir}/${output.xml.temp.file}"/>
 
     </target>
 

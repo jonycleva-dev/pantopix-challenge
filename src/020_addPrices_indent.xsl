@@ -1,14 +1,17 @@
 <xsl:stylesheet version="2.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                xmlns:my="http://pantopix.com/challengefunctions"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                exclude-result-prefixes="my xs">
 
-    <!-- Global variable to identify the column that contains '[articleNumber]' -->
+    <!-- Parameters -->
+    <xsl:param name="priceDataFile"/>
+
+    <!-- Global variables -->
+    <xsl:variable name="externalPriceData" select="document($priceDataFile)/priceData"/>
     <xsl:variable name="articleNumberColumn" select="/tableData/table/row[1]/cell[normalize-space(value) = '[articleNumber]']/@iCol"/>
-
-    <!-- Global variable to identify the current column count -->
     <xsl:variable name="colCnt" select="/tableData/table/@colCnt"/>
-
-    <!-- Global variable to get all article elements -->
-    <xsl:key name="articleKey" match="priceData/node/article" use="@id"/>
+    <xsl:key name="articleKey" match="article" use="@id"/>
 
     <xsl:output method="xml" indent="yes"/>
 
@@ -63,11 +66,9 @@
     <!-- Template for the remaining rows -->
     <xsl:template match="row[position() > 1]">
         <xsl:variable name="fullId" select="normalize-space(cell[@iCol = $articleNumberColumn]/value)"/>
-        <xsl:variable name="articleId" select="substring-after($fullId, '-')"/>
-        <xsl:variable name="article" select="key('articleKey', $articleId)"/>
-        <xsl:variable name="normalizedPrice" select="translate($article/@price, ',', '.')"/>
-        <xsl:variable name="originalPrice" select="number($normalizedPrice)"/>
-        <xsl:variable name="priceWoTax" select="format-number($originalPrice * 0.81, '#0.00')"/>
+        <xsl:variable name="article" select="key('articleKey', substring-after($fullId, '-'), $externalPriceData)"/>
+        <xsl:variable name="priceWoTax" select="my:processPrice($article/@price)"/>
+
         <xsl:copy>
             <!-- Copy all attributes and nodes of the row -->
             <xsl:apply-templates select="@*|node()"/>
@@ -75,7 +76,7 @@
             <!-- Adding price value -->
             <cell iCol="{$colCnt + 1}">
                 <xsl:if test="$article">
-                    <value><xsl:value-of select="concat($originalPrice,' ',$article/@currency)"/></value>
+                    <value><xsl:value-of select="concat($article/@price,' ',$article/@currency)"/></value>
                 </xsl:if>
             </cell>
 
@@ -88,7 +89,12 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- removing prideData -->
-    <xsl:template match="priceData"/>
+    <!-- Custom function to process the price -->
+    <xsl:function name="my:processPrice" as="xs:string">
+        <xsl:param name="inputNumber" as="xs:string"/>
+        <xsl:variable name="normalizedNumber" select="translate($inputNumber, ',', '.')"/>
+        <xsl:variable name="result" select="number($normalizedNumber) * 0.81"/>
+        <xsl:value-of select="format-number($result, '0.#####')"/>
+    </xsl:function>
 
 </xsl:stylesheet>
