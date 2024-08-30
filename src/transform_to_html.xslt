@@ -10,12 +10,12 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Table data preview</title>
+                <title>Table Data Preview</title>
             </head>
             <body>
                 <!-- Display only the file name from the full path -->
                 <h1><xsl:value-of select="$fileName"/></h1>
-                <p id="top">Tables overview</p>
+                <p id="top">Tables Overview</p>
                 <ol>
                     <li>
                         <a href="#d2e2">
@@ -36,11 +36,12 @@
                     <!-- Header Row with idx and column numbers -->
                     <tr>
                         <td style="color: gray;">idx</td>
-                        <!-- Generate the column numbers -->
-                        <xsl:call-template name="generate-column-numbers">
-                            <xsl:with-param name="current" select="1"/>
-                            <xsl:with-param name="max" select="/tableData/table/@colCnt"/>
-                        </xsl:call-template>
+                        <!-- Generate the column numbers using XSLT 2.0 sequence -->
+                        <xsl:for-each select="1 to /tableData/table/@colCnt">
+                            <td style="color: gray;">
+                                <xsl:value-of select="."/>
+                            </td>
+                        </xsl:for-each>
                     </tr>
 
                     <!-- Rows of the table -->
@@ -66,24 +67,6 @@
                 </table>
             </body>
         </html>
-    </xsl:template>
-
-    <!-- Recursive template to generate column numbers -->
-    <!-- I have problems to use foreach select="1 to /tableData/table/@colCnt" -->
-
-    <xsl:template name="generate-column-numbers">
-        <xsl:param name="current"/>
-        <xsl:param name="max"/>
-
-        <xsl:if test="$current &lt;= $max">
-            <td style="color: gray;">
-                <xsl:value-of select="$current"/>
-            </td>
-            <xsl:call-template name="generate-column-numbers">
-                <xsl:with-param name="current" select="$current + 1"/>
-                <xsl:with-param name="max" select="$max"/>
-            </xsl:call-template>
-        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet>
