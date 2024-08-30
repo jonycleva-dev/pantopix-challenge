@@ -42,6 +42,9 @@
             <xsl:variable name="currentProp" select="."/>
             <xsl:text>&#9;</xsl:text>
             <xsl:value-of select="$currentNode/prop[@key=$currentProp]/value" />
+            <xsl:if test="$currentNode/prop[@key=$currentProp]/value/@unit">
+                <xsl:value-of select="concat(' ',$currentNode/prop[@key=$currentProp]/value/@unit)" />
+            </xsl:if>
         </xsl:for-each>
 
         <xsl:text>&#10;</xsl:text> <!-- New line after each node row -->
