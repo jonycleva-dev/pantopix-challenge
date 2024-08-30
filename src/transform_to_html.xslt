@@ -7,6 +7,11 @@
     <!-- Declare the parameter for the filename -->
     <xsl:param name="fileName" />
 
+    <!-- Global variables to store frequently used XPath results -->
+    <xsl:variable name="colCnt" select="/tableData/table/@colCnt"/>
+    <xsl:variable name="rowCnt" select="/tableData/table/@rowCnt"/>
+    <xsl:variable name="tableName" select="/tableData/table/@name"/>
+
     <xsl:template match="/">
         <html>
             <head>
@@ -19,17 +24,17 @@
                 <ol>
                     <li>
                         <a href="#d2e2">
-                            <xsl:value-of select="/tableData/table/@name"/>
+                            <xsl:value-of select="$tableName"/>
                         </a>
-                        (<xsl:value-of select="/tableData/table/@colCnt"/> cols,
-                        <xsl:value-of select="/tableData/table/@rowCnt"/> rows)
+                        (<xsl:value-of select="$colCnt"/> cols,
+                        <xsl:value-of select="$rowCnt"/> rows)
                     </li>
                 </ol>
                 <br/>
                 <p id="d2e2">
-                    Tab. 1: <b><xsl:value-of select="/tableData/table/@name"/></b>
-                    (<xsl:value-of select="/tableData/table/@colCnt"/> cols,
-                    <xsl:value-of select="/tableData/table/@rowCnt"/> rows)<br/>
+                    Tab. 1: <b><xsl:value-of select="$tableName"/></b>
+                    (<xsl:value-of select="$colCnt"/> cols,
+                    <xsl:value-of select="$rowCnt"/> rows)<br/>
                     <a href="#top">[top]</a>
                 </p>
                 <table border="1">
@@ -37,36 +42,43 @@
                     <tr>
                         <td style="color: gray;">idx</td>
                         <!-- Generate the column numbers using XSLT 2.0 sequence -->
-                        <xsl:for-each select="1 to /tableData/table/@colCnt">
+                        <xsl:for-each select="1 to $colCnt">
                             <td style="color: gray;">
                                 <xsl:value-of select="."/>
                             </td>
                         </xsl:for-each>
                     </tr>
 
-                    <!-- Rows of the table -->
-                    <xsl:for-each select="/tableData/table/row">
-                        <tr>
-                            <td style="color: gray;">
-                                <xsl:value-of select="@iRow"/>
-                            </td>
-                            <xsl:for-each select="cell">
-                                <td>
-                                    <xsl:choose>
-                                        <xsl:when test="styleSettings/@textFormats">
-                                            <b><xsl:value-of select="value"/></b>
-                                        </xsl:when>
-                                        <xsl:otherwise>
-                                            <xsl:value-of select="value"/>
-                                        </xsl:otherwise>
-                                    </xsl:choose>
-                                </td>
-                            </xsl:for-each>
-                        </tr>
-                    </xsl:for-each>
+                    <!-- Apply templates to each row -->
+                    <xsl:apply-templates select="/tableData/table/row"/>
                 </table>
             </body>
         </html>
+    </xsl:template>
+
+    <!-- Template to match each row and process it -->
+    <xsl:template match="row">
+        <tr>
+            <td style="color: gray;">
+                <xsl:value-of select="@iRow"/>
+            </td>
+            <!-- Apply templates to each cell within the row -->
+            <xsl:apply-templates select="cell"/>
+        </tr>
+    </xsl:template>
+
+    <!-- Template to match each cell and process it -->
+    <xsl:template match="cell">
+        <td>
+            <xsl:choose>
+                <xsl:when test="styleSettings/@textFormats">
+                    <b><xsl:value-of select="value"/></b>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="value"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </td>
     </xsl:template>
 
 </xsl:stylesheet>
