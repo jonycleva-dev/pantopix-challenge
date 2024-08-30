@@ -3,10 +3,12 @@
 
     <xsl:output method="html" indent="yes"/>
 
-    <!-- Declare the parameter for the filename -->
+    <xsl:strip-space elements="*"/>
+
+    <!-- Parameters -->
     <xsl:param name="fileName" />
 
-    <!-- Global variables to store frequently used XPath results -->
+    <!-- Global variables -->
     <xsl:variable name="colCnt" select="/tableData/table/@colCnt"/>
     <xsl:variable name="rowCnt" select="/tableData/table/@rowCnt"/>
     <xsl:variable name="tableName" select="/tableData/table/@name"/>
@@ -17,7 +19,6 @@
                 <title>Table Data Preview</title>
             </head>
             <body>
-                <!-- Display only the file name from the full path -->
                 <h1><xsl:value-of select="$fileName"/></h1>
                 <p id="top">Tables Overview</p>
                 <ol>
@@ -36,37 +37,38 @@
                     <xsl:value-of select="$rowCnt"/> rows)<br/>
                     <a href="#top">[top]</a>
                 </p>
-                <table border="1">
-                    <!-- Header Row with idx and column numbers -->
-                    <tr>
-                        <td style="color: gray;">idx</td>
-                        <!-- Generate the column numbers using XSLT 2.0 sequence -->
-                        <xsl:for-each select="1 to $colCnt">
-                            <td style="color: gray;">
-                                <xsl:value-of select="."/>
-                            </td>
-                        </xsl:for-each>
-                    </tr>
-
-                    <!-- Apply templates to each row -->
-                    <xsl:apply-templates select="/tableData/table/row"/>
-                </table>
+                <!-- Apply templates to generate the table -->
+                <xsl:apply-templates select="/tableData/table"/>
             </body>
         </html>
     </xsl:template>
 
-    <!-- Template to match each row and process it -->
+    <xsl:template match="table">
+        <table border="1">
+            <!-- Header Row with idx and column numbers -->
+            <tr>
+                <td style="color: gray;">idx</td>
+                <!-- Generate the column numbers -->
+                <xsl:for-each select="1 to $colCnt">
+                    <td style="color: gray;">
+                        <xsl:value-of select="."/>
+                    </td>
+                </xsl:for-each>
+            </tr>
+
+            <xsl:apply-templates select="row"/>
+        </table>
+    </xsl:template>
+
     <xsl:template match="row">
         <tr>
             <td style="color: gray;">
                 <xsl:value-of select="@iRow"/>
             </td>
-            <!-- Apply templates to each cell within the row -->
             <xsl:apply-templates select="cell"/>
         </tr>
     </xsl:template>
 
-    <!-- Template to match each cell and process it -->
     <xsl:template match="cell">
         <td>
             <xsl:choose>
