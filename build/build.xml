@@ -118,7 +118,14 @@
         </xslt>
     </target>
 
-    <target name="generate-csv" depends="generate-functional-csv">
+    <target name="generate-functional-indent-csv" depends="generate-functional-csv">
+        <xslt in="${output.dir}/${output.functional.prices.xml.file}"
+              out="${output.dir}/040_products_indent_withPrices.csv"
+              style="${src.dir}/040_convertToParentIdOrIndentCsv.xsl">
+        </xslt>
+    </target>
+
+    <target name="generate-csv" depends="generate-functional-indent-csv">
         <xslt in="${output.dir}/${output.prices.xml.file}"
               out="${output.dir}/040_products_indent_withPrices.csv"
               style="${src.dir}/transform_to_csv.xslt">
