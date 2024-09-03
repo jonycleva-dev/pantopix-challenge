@@ -13,29 +13,60 @@ This project is designed to process an Excel file containing product data, trans
 ## Build Targets
 
 ### 1. `clean`
-Cleans the output directory by deleting all existing files and recreating the directory.
+- **Input**: N/A
+- **Output**: Cleans the `output` directory.
+- **Tool used**: Ant `delete` and `mkdir`.
 
 ### 2. `compile`
-Compiles the Java source code located in the `src` directory and places the compiled classes into the `build` directory.
+- **Input**: Java files in `src/`.
+- **Output**: Compiled classes in `build/`.
+- **Tool used**: Ant `javac`.
 
 ### 3. `convert-excel-to-xml`
-Converts the Excel file (`000_products_indent_noPrices.xlsx`) located in the `input` directory to an XML file. The output XML file is saved in the `output` directory.
+- **Input**: `input/000_products_indent_noPrices.xlsx`
+- **Output**: `output/000_products_indent_noPrices.xml`
+- **Java Class**: `pantopix.exceltoxml.ExcelToXmlConverter`
 
 ### 4. `generate-html-preview`
-Generates an HTML preview of the XML file without prices. This is done using the `transform_to_html.xslt` stylesheet.
+- **Input**: `output/000_products_indent_noPrices.xml`
+- **Output**: `output/000_products_indent_noPrices.html`
+- **XSLT**: `src/transform_to_html.xslt`
 
 ### 5. `process-with-prices`
-Adds price information from the `priceData.xml` file to the XML data and creates a new XML file (`000_products_indent_withPrices.xml`) with the enriched data.
+- **Input**:
+    - `output/000_products_indent_noPrices.xml`
+    - `input/priceData.xml`
+- **Output**: `output/000_products_indent_withPrices.xml`
+- **XSLT**: `src/020_addPrices_indent.xsl`
 
 ### 6. `generate-html-prices-preview`
-Generates an HTML preview of the XML file that includes the prices, using the `transform_to_html.xslt` stylesheet.
+- **Input**: `output/000_products_indent_withPrices.xml`
+- **Output**: `output/000_products_indent_withPrices.html`
+- **XSLT**: `src/transform_to_html.xslt`
 
 ### 7. `products-functional`
-Transforms the initial XML data into a functional format using the `010_convertToFunctionalXml.xsl` stylesheet.
+- **Input**: `output/000_products_indent_noPrices.xml`
+- **Output**: `output/010_products_functional_noPrices.xml`
+- **XSLT**: `src/010_convertToFunctionalXml.xsl`
 
 ### 8. `process-with-prices-functional`
-Adds price information to the functional XML format and generates an enriched XML file (`020_products_functional_withPrices.xml`).
+- **Input**:
+    - `output/010_products_functional_noPrices.xml`
+    - `input/priceData.xml`
+- **Output**: `output/020_products_functional_withPrices.xml`
+- **XSLT**: `src/020_addPrices.xsl`
 
-### 9. `generate-csv`
-Generates a CSV file from the XML data that includes prices. The CSV file is created using the `transform_to_csv.xslt` stylesheet and saved as `040_products_indent_withPrices.csv` in the `output` directory.
+### 9. `generate-functional-csv`
+- **Input**: `output/020_products_functional_withPrices.xml`
+- **Output**: `output/030_products_parentId_withPrices.csv`
+- **XSLT**: `src/030_convertToParentIdCsv.xsl`
 
+### 10. `generate-functional-indent-csv`
+- **Input**: `output/020_products_functional_withPrices.xml`
+- **Output**: `output/040_products_indent_withPrices.csv`
+- **XSLT**: `src/040_convertToParentIdOrIndentCsv.xsl`
+
+### 11. `generate-csv`
+- **Input**: `output/000_products_indent_withPrices.xml`
+- **Output**: `output/040_products_indent_withPrices.csv`
+- **XSLT**: `src/transform_to_csv.xslt`
